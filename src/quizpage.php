@@ -93,8 +93,33 @@ try {
           <span class="p-quiz-box_question_title_text"><?= $questions[$i]["content"]; ?></span>
         </h2>
         <figure class="p-quiz-box_question_image">
-          <img src="../assets/img/quiz/img-quiz0<?= $i + 1?>.png" alt="">
+          <img src="../assets/img/quiz/img-quiz0<?= $i + 1 ?>.png" alt="">
         </figure>
+        <div class="p-quiz-box_answer">
+          <span class="p-quiz-box_label p-quiz-box_label--accent">A</span>
+          <ul class="p-quiz-box_answer_list">
+            <?php for ($j = 0; $j < count($choices); $j++) { ?>
+              <li class="p-quiz-box_answer_item">
+                <button class="p-quiz-box_answer_button js-answer" data-answer="${answerIndex}">
+                  <?php
+                  if ($choices[$j]["question_id"] == $questions[$i]["id"]) {
+                    echo $choices[$j]["name"];
+                  }
+                  ?><i class="u-icon_arrow"></i>
+                </button>
+              </li>
+            <?php } ?>
+
+          </ul>
+          <div class="p-quiz-box_answer_correct js-answerBox">
+            <p class="p-quiz-box_answer_correct_title js-answerTitle"></p>
+            <p class="p-quiz-box_answer_correct_content">
+              <span class="p-quiz-box_answer_correct_content_label">A</span>
+              <span class="js-answerText"></span>
+            </p>
+          </div>
+        </div>
+
       <?php } ?>
     </div>
   </main>
@@ -152,8 +177,8 @@ try {
     </div>
   </footer>
 </body>
-<script src="quiz.js"></script>
+<!-- <script src="quiz.js"></script> -->
 <!-- <script src="quiz-sub.js"></script> -->
-<script src="../toppage/toppage.js"></script>
+<!-- <script src="../toppage/toppage.js"></script> -->
 
 </html>
