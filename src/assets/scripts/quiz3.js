@@ -73,38 +73,38 @@
      * @description 回答の生成
      * @type {string}
      */
-    const answersHtml = quizItem.answers.map((answer, answerIndex) => `<li class="p-quiz-box__answer__item">
-        <button class="p-quiz-box__answer__button js-answer" data-answer="${answerIndex}">
-          ${answer}<i class="u-icon__arrow"></i>
+    const answersHtml = quizItem.answers.map((answer, answerIndex) => `<li class="p-quiz-box_answer_item">
+        <button class="p-quiz-box_answer_button js-answer" data-answer="${answerIndex}">
+          ${answer}<i class="u-icon_arrow"></i>
         </button>
       </li>`
     ).join('');
 
     // 引用テキストの生成
-    const noteHtml = quizItem.note ? `<cite class="p-quiz-box__note">
-      <i class="u-icon__note"></i>${quizItem.note}
+    const noteHtml = quizItem.note ? `<cite class="p-quiz-box_note">
+      <i class="u-icon_note"></i>${quizItem.note}
     </cite>` : '';
 
     return `<section class="p-quiz-box js-quiz" data-quiz="${questionNumber}">
-      <div class="p-quiz-box__question">
-        <h2 class="p-quiz-box__question__title">
-          <span class="p-quiz-box__label">Q${questionNumber + 1}</span>
+      <div class="p-quiz-box_question">
+        <h2 class="p-quiz-box_question_title">
+          <span class="p-quiz-box_label">Q${questionNumber + 1}</span>
           <span
-            class="p-quiz-box__question__title__text">${quizItem.question}</span>
+            class="p-quiz-box_question_title_text">${quizItem.question}</span>
         </h2>
-        <figure class="p-quiz-box__question__image">
+        <figure class="p-quiz-box_question_image">
           <img src="../assets/img/quiz/img-quiz0${quizItem.id}.png" alt="">
         </figure>
       </div>
-      <div class="p-quiz-box__answer">
-        <span class="p-quiz-box__label p-quiz-box__label--accent">A</span>
-        <ul class="p-quiz-box__answer__list">
+      <div class="p-quiz-box_answer">
+        <span class="p-quiz-box_label p-quiz-box_label--accent">A</span>
+        <ul class="p-quiz-box_answer_list">
           ${answersHtml}
         </ul>
-        <div class="p-quiz-box__answer__correct js-answerBox">
-          <p class="p-quiz-box__answer__correct__title js-answerTitle"></p>
-          <p class="p-quiz-box__answer__correct__content">
-            <span class="p-quiz-box__answer__correct__content__label">A</span>
+        <div class="p-quiz-box_answer_correct js-answerBox">
+          <p class="p-quiz-box_answer_correct_title js-answerTitle"></p>
+          <p class="p-quiz-box_answer_correct_content">
+            <span class="p-quiz-box_answer_correct_content_label">A</span>
             <span class="js-answerText"></span>
           </p>
         </div>
@@ -146,7 +146,7 @@
    * @type {NodeListOf<Element>}
    * @description すべての問題を取得
    */
-  const allQuiz  = document.querySelectorAll('.js-quiz');
+  const allQuiz = document.querySelectorAll('.js-quiz');
 
   /**
    * @description buttonタグにdisabledを付与

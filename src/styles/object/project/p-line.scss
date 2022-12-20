@@ -7,7 +7,7 @@
     margin-top: 144px;
   }
 
-  &__body {
+  &_body {
     background: url(../img/bg-line.jpg) center center / cover;
     position: relative;
     padding: 42px 24px;
@@ -30,11 +30,11 @@
     }
   }
 
-  &__body__inner {
+  &_body_inner {
     position: relative;
   }
 
-  &__title {
+  &_title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,12 +48,12 @@
       gap: 8px;
     }
 
-    .u-icon__line {
+    .u-icon_line {
       font-size: 40px;
     }
   }
 
-  &__content {
+  &_content {
     color: $color-gray-light;
     font-size: 14px;
     line-height: 1.6;
@@ -67,7 +67,7 @@
     }
   }
 
-  &__footer {
+  &_footer {
     margin-top: 34px;
     text-align: center;
 
@@ -76,7 +76,7 @@
     }
   }
 
-  &__button {
+  &_button {
     display: inline-block;
     color: $color-dark;
     font-size: 14px;
@@ -90,7 +90,7 @@
     position: relative;
     padding: 12px;
 
-    .u-icon__link {
+    .u-icon_link {
       position: absolute;
       top: 50%;
       right: 20px;

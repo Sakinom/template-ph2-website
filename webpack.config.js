@@ -24,7 +24,7 @@ const settings = {
  * エントリーポイントの指定
  */
 const entryPoints = {
-  main: [ `./${dir.src}/styles/common.scss` ]
+  main: [`./${dir.src}/styles/common.scss`]
 }
 
 /**
@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
       ...entryPoints
     },
     output: {
-      path: path.resolve(__dirname, dir.dist),
+      path: path.resolve(_dirname, dir.dist),
     },
     mode: argv.mode,
     cache: true,

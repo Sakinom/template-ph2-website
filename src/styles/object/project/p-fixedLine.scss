@@ -14,7 +14,7 @@
     bottom: 16px;
   }
 
-  &__link {
+  &_link {
     background-color: #5FDF5B;
     display: flex;
     padding: 10px;
@@ -31,7 +31,7 @@
       padding: 22px 20px 22px 24px;
     }
 
-    .u-icon__line {
+    .u-icon_line {
       font-size: 28px;
 
       @include mq(md) {
@@ -39,7 +39,7 @@
       }
     }
 
-    .u-icon__link {
+    .u-icon_link {
       font-size: 18px;
       color: #fff;
 
@@ -49,7 +49,7 @@
     }
   }
 
-  &__link__text {
+  &_link_text {
     font-size: 14px;
     letter-spacing: 0.14em;
     font-weight: bold;

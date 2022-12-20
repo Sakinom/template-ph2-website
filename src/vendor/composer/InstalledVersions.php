@@ -266,8 +266,8 @@ class InstalledVersions
         if (null === self::$installed) {
             // only require the installed.php file if this file is loaded from its dumped location,
             // and not from its source location in the composer/composer package, see https://github.com/composer/composer/issues/9937
-            if (substr(__DIR__, -8, 1) !== 'C') {
-                self::$installed = include __DIR__ . '/installed.php';
+            if (substr(_DIR_, -8, 1) !== 'C') {
+                self::$installed = include _DIR_ . '/installed.php';
             } else {
                 self::$installed = array();
             }
@@ -327,9 +327,9 @@ class InstalledVersions
             foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
                 if (isset(self::$installedByVendor[$vendorDir])) {
                     $installed[] = self::$installedByVendor[$vendorDir];
-                } elseif (is_file($vendorDir.'/composer/installed.php')) {
-                    $installed[] = self::$installedByVendor[$vendorDir] = require $vendorDir.'/composer/installed.php';
-                    if (null === self::$installed && strtr($vendorDir.'/composer', '\\', '/') === strtr(__DIR__, '\\', '/')) {
+                } elseif (is_file($vendorDir . '/composer/installed.php')) {
+                    $installed[] = self::$installedByVendor[$vendorDir] = require $vendorDir . '/composer/installed.php';
+                    if (null === self::$installed && strtr($vendorDir . '/composer', '\\', '/') === strtr(_DIR_, '\\', '/')) {
                         self::$installed = $installed[count($installed) - 1];
                     }
                 }
@@ -339,8 +339,8 @@ class InstalledVersions
         if (null === self::$installed) {
             // only require the installed.php file if this file is loaded from its dumped location,
             // and not from its source location in the composer/composer package, see https://github.com/composer/composer/issues/9937
-            if (substr(__DIR__, -8, 1) !== 'C') {
-                self::$installed = require __DIR__ . '/installed.php';
+            if (substr(_DIR_, -8, 1) !== 'C') {
+                self::$installed = require _DIR_ . '/installed.php';
             } else {
                 self::$installed = array();
             }

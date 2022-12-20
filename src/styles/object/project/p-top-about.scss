@@ -1,7 +1,7 @@
 @use '../../foundation/variables' as *;
 
 .p-top-about {
-  &__body {
+  &_body {
     margin-top: 22px;
     display: grid;
     gap: 16px;
@@ -14,12 +14,12 @@
     }
   }
 
-  &__image {
+  &_image {
     border-radius: 16px;
     overflow: hidden;
   }
 
-  &__content {
+  &_content {
     font-size: 14px;
     line-height: 1.8;
   }

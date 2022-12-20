@@ -18,18 +18,18 @@
 </head>
 
 <body>
-  <?php include(dirname(__FILE__) . '/components/header.php'); ?>
+  <?php include(dirname(_FILE_) . '/components/header.php'); ?>
   <main class="l-main">
     <section class="p-top-hero">
-      <div class="p-top-hero__inner">
-        <div class="p-top-hero__body">
-          <h1 class="p-top-hero__body__title">学生プログラミングコミュニティ POSSE（ポッセ）</h1>
-          <span class="p-top-hero__body__catchcopy">自分史上最高<br>を仲間と。</span>
+      <div class="p-top-hero_inner">
+        <div class="p-top-hero_body">
+          <h1 class="p-top-hero_body_title">学生プログラミングコミュニティ POSSE（ポッセ）</h1>
+          <span class="p-top-hero_body_catchcopy">自分史上最高<br>を仲間と。</span>
         </div>
-        <picture class="p-top-hero__image">
+        <picture class="p-top-hero_image">
           <img src="./assets/img/img-hero.jpg" alt="">
         </picture>
-        <div class="p-top-hero__scroll">Scroll Down</div>
+        <div class="p-top-hero_scroll">Scroll Down</div>
       </div>
     </section>
     <!-- /.p-top-hero -->
@@ -38,13 +38,13 @@
       <section class="l-section p-top-about">
         <div class="l-container">
           <h2 class="p-heading">
-            POSSEとは<span class="p-heading__caption" lang="en" aria-hidden="true">About POSSE</span>
+            POSSEとは<span class="p-heading_caption" lang="en" aria-hidden="true">About POSSE</span>
           </h2>
-          <div class="p-top-about__body">
-            <picture class="p-top-about__image">
+          <div class="p-top-about_body">
+            <picture class="p-top-about_image">
               <img src="./assets/img/img-about.jpg" alt="POSSEメンバー集合写真">
             </picture>
-            <div class="p-top-about__content">
+            <div class="p-top-about_content">
               <p>
                 学生プログラミングコミュニティ「POSSE(ポッセ)」は、人格とプログラミング、二つの面での成長をスローガンに活動しており、大学生だけが集まって学びを深めるコミュニティです。<br>プログラミングだけではありません。オフラインでのイベントや、旅行など様々な企画を行っています！<br>それらを通じて、夏休みの大半をPOSSEで出来た仲間と過ごす人もたくさんいるほどメンバーとの仲が深まります。
               </p>
@@ -58,22 +58,22 @@
 
   <div class="p-line">
     <div class="l-container">
-      <div class="p-line__body">
-        <div class="p-line__body__inner">
-          <h2 class="p-heading -light p-line__title"><i class="u-icon__line"></i>POSSE 公式LINE</h2>
-          <div class="p-line__content">
+      <div class="p-line_body">
+        <div class="p-line_body_inner">
+          <h2 class="p-heading -light p-line_title"><i class="u-icon_line"></i>POSSE 公式LINE</h2>
+          <div class="p-line_content">
             <p>公式LINEにてご質問を随時受け付けております。<br>詳細やPOSSE最新情報につきましては、公式LINEにてお知らせ致しますので<br>下記ボタンより友達追加をお願いします！</p>
           </div>
-          <div class="p-line__footer">
+          <div class="p-line_footer">
             <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer"
-              class="p-line__button">LINE追加<i class="u-icon__link"></i></a>
+              class="p-line_button">LINE追加<i class="u-icon_link"></i></a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <?php include(dirname(__FILE__) . '/components/footer.php'); ?>
+  <?php include(dirname(_FILE_) . '/components/footer.php'); ?>
   
 </body>
 

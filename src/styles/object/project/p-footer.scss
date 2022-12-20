@@ -8,7 +8,7 @@
     margin-top: 80px;
   }
 
-  &__logo {
+  &_logo {
     display: block;
     width: 164px;
     margin: 0 auto;
@@ -22,7 +22,7 @@
     }
   }
 
-  &__siteinfo__link {
+  &_siteinfo_link {
     display: inline-block;
     font-size: 14px;
     color: $color-gray-dark;
@@ -30,7 +30,7 @@
     margin-top: 24px;
   }
 
-  &__sns__list {
+  &_sns_list {
     display: flex;
     gap: 8px;
     justify-content: center;
@@ -41,7 +41,7 @@
     }
   }
 
-  &__copyright {
+  &_copyright {
     border-top: solid 1px $color-gray-light;
     color: $color-gray-dark;
     font-size: 10px;

@@ -1,21 +1,21 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => '_root_',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => NULL,
         'type' => 'library',
-        'install_path' => __DIR__ . '/../../',
+        'install_path' => _DIR_ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        '_root_' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => NULL,
             'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
+            'install_path' => _DIR_ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

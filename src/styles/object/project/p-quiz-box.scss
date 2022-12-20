@@ -9,7 +9,7 @@
     }
   }
 
-  &__label {
+  &_label {
     display: inline-block;
     line-height: 1.5;
     font-size: 24px;
@@ -29,9 +29,9 @@
     }
   }
 
-  &__question {}
+  &_question {}
 
-  &__question__title__text {
+  &_question_title_text {
     display: block;
     font-size: 18px;
     font-weight: bold;
@@ -45,7 +45,7 @@
     }
   }
 
-  &__question__image {
+  &_question_image {
     max-width: 718px;
     margin: 24px auto 0;
 
@@ -54,7 +54,7 @@
     }
   }
 
-  &__answer {
+  &_answer {
     margin-top: 32px;
 
     @include mq(md) {
@@ -62,7 +62,7 @@
     }
   }
 
-  &__answer__list {
+  &_answer_list {
     display: grid;
     gap: 8px;
     margin-top: 16px;
@@ -73,7 +73,7 @@
     }
   }
 
-  &__answer__button {
+  &_answer_button {
     border: solid 4px $color-gray-light;
     border-radius: 8px;
     font-size: 14px;
@@ -92,7 +92,7 @@
       border-width: 5px;
     }
 
-    .u-icon__arrow {
+    .u-icon_arrow {
       font-size: 12px;
       margin-left: auto;
 
@@ -102,7 +102,7 @@
     }
 
     &:disabled {
-      .u-icon__arrow {
+      .u-icon_arrow {
         display: none;
       }
     }
@@ -111,13 +111,13 @@
       border-color: $color-primary;
       background-color: $color-primary-light;
 
-      .u-icon__arrow {
+      .u-icon_arrow {
         display: none;
       }
     }
   }
 
-  &__note {
+  &_note {
     margin-top: 16px;
     display: block;
     background-color: $color-gray-lightest;
@@ -137,13 +137,13 @@
     }
 
     @include mq(md, max) {
-      .u-icon__note {
+      .u-icon_note {
         font-size: 17px;
       }
     }
   }
 
-  &__answer__correct {
+  &_answer_correct {
     display: none;
     margin-top: 16px;
     background-color: $color-accent-light;
@@ -160,7 +160,7 @@
     }
   }
 
-  &__answer__correct__title {
+  &_answer_correct_title {
     font-size: 24px;
     font-weight: bold;
     line-height: 1.5;
@@ -175,7 +175,7 @@
     }
   }
 
-  &__answer__correct__content {
+  &_answer_correct_content {
     font-size: 18px;
     display: flex;
     line-height: 1.8;
@@ -185,7 +185,7 @@
     margin-top: 16px;
   }
 
-  &__answer__correct__content__label {
+  &_answer_correct_content_label {
     font-family: $font-english;
     font-size: 24px;
   }

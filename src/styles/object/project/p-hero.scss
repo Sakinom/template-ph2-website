@@ -7,12 +7,12 @@
     padding: 110px 0 76px;
   }
 
-  &__title {
+  &_title {
     color: $color-light;
     font-weight: bold;
   }
 
-  &__title__label {
+  &_title_label {
     font-size: 14px;
     line-height: 1.8;
 
@@ -21,7 +21,7 @@
     }
   }
 
-  &__title__inline {
+  &_title_inline {
     display: block;
     font-size: 28px;
     line-height: 1.5;

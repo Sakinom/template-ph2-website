@@ -6,7 +6,7 @@
   align-items: center;
   background-color: $color-light;
 
-  &__logo {
+  &_logo {
     width: 120px;
     position: relative;
     z-index: 100;
@@ -16,7 +16,7 @@
     }
   }
 
-  &__button {
+  &_button {
     width: 40px;
     height: 40px;
     position: fixed;
@@ -63,7 +63,7 @@
     }
   }
 
-  &__inner {
+  &_inner {
     display: flex;
 
     @include mq(md, max) {
@@ -88,11 +88,11 @@
     }
   }
 
-  &__nav {
+  &_nav {
     // margin-left: auto;
   }
 
-  &__nav__list {
+  &_nav_list {
     display: flex;
     gap: 24px;
 
@@ -106,7 +106,7 @@
     }
   }
 
-  &__nav__item__link {
+  &_nav_item_link {
     color: $color-dark;
     font-size: 24px;
     letter-spacing: .05em;
@@ -120,7 +120,7 @@
     }
   }
 
-  &__official {
+  &_official {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,7 +133,7 @@
     }
   }
 
-  &__official__link {
+  &_official_link {
     &--line {
       font-size: 14px;
       letter-spacing: 0.1em;
@@ -147,13 +147,13 @@
       position: relative;
       padding: 16px;
 
-      .u-icon__line {
+      .u-icon_line {
         margin-right: 8px;
         font-size: 28px;
         vertical-align: middle;
       }
 
-      .u-icon__link {
+      .u-icon_link {
         font-size: 18px;
         position: absolute;
         right: 20px;
@@ -167,14 +167,14 @@
       font-size: 14px;
       line-height: 1.8;
 
-      .u-icon__link {
+      .u-icon_link {
         margin-left: 6px;
         font-size: 14px;
       }
     }
   }
 
-  &__sns {
+  &_sns {
     @include mq(md, max) {
       justify-content: center;
       margin-top: 20px;

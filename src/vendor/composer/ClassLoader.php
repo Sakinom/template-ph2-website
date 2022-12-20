@@ -18,8 +18,8 @@ namespace Composer\Autoload;
  *     $loader = new \Composer\Autoload\ClassLoader();
  *
  *     // register classes with namespaces
- *     $loader->add('Symfony\Component', __DIR__.'/component');
- *     $loader->add('Symfony',           __DIR__.'/framework');
+ *     $loader->add('Symfony\Component', _DIR_.'/component');
+ *     $loader->add('Symfony',           _DIR_.'/framework');
  *
  *     // activate the autoloader
  *     $loader->register();
@@ -103,7 +103,7 @@ class ClassLoader
     /**
      * @param ?string $vendorDir
      */
-    public function __construct($vendorDir = null)
+    public function _construct($vendorDir = null)
     {
         $this->vendorDir = $vendorDir;
     }
@@ -450,7 +450,7 @@ class ClassLoader
             return false;
         }
         if (null !== $this->apcuPrefix) {
-            $file = apcu_fetch($this->apcuPrefix.$class, $hit);
+            $file = apcu_fetch($this->apcuPrefix . $class, $hit);
             if ($hit) {
                 return $file;
             }
@@ -464,7 +464,7 @@ class ClassLoader
         }
 
         if (null !== $this->apcuPrefix) {
-            apcu_add($this->apcuPrefix.$class, $file);
+            apcu_add($this->apcuPrefix . $class, $file);
         }
 
         if (false === $file) {

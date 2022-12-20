@@ -5,155 +5,142 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POSSE 初めてのWeb制作</title>
-  <!-- スタイルシート読み込み -->
-  <link rel="stylesheet" href="./assets/styles/common.css">
-  <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
-    rel="stylesheet">
-  <script src="../assets/scripts/common.js" defer></script>
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
+  rel="stylesheet">
+  <link rel="stylesheet" href="./src/assets/styles/style.css">
+  <title>POSSE 初めてのWeb制作</title>
 </head>
 
 <body>
-  <header id="js-header" class="l-header p-header">
-    <div class="p-header__logo"><img src="./assets/img/logo.svg" alt="POSSE"></div>
-    <button class="p-header__button" id="js-headerButton"></button>
-    <div class="p-header__inner">
-      <nav class="p-header__nav">
-        <ul class="p-header__nav__list">
-          <li class="p-header__nav__item">
-            <a href="./" class="p-header__nav__item__link">POSSEとは</a>
+  <header class="l-header p-header">
+    <div class="p-header_logo"><img src="./src/assets/img/logo.svg" alt="POSSE"></div>
+    <div class="hamburger-menu">
+      <input type="checkbox" id="menu-btn-check">
+      <label for="menu-btn-check" class="menu-btn"><span></span></label>
+      <div class="menu-content">
+        <ul>
+          <li>
+            <a href="./index.html" class="menu-item_1">POSSEとは</a>
           </li>
-          <li class="p-header__nav__item">
-            <a href="./quiz/" class="p-header__nav__item__link">クイズ</a>
+          <li>
+            <a href="./src/quizpage.php" class="menu-item_2">クイズ</a>
           </li>
         </ul>
-      </nav>
-      <div class="p-header__official">
-        <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer" class="p-header__official__link--line">
-          <i class="u-icon__line"></i>
-          <span class="">POSSE公式LINEを追加</span>
-          <i class="u-icon__link"></i>
-        </a>
-        <a href="" class="p-header__official__link--website">POSSE 公式サイト<i class="u-icon__link"></i></a>
       </div>
-      <ul class="p-header__sns p-sns">
-        <li class="p-sns__item">
-          <a href="https://twitter.com/posse_program" target="_blank" rel="noopener noreferrer" class="p-sns__item__link"
-            aria-label="Twitter">
-            <i class="u-icon__twitter"></i>
-          </a>
+    </div>
+    <nav class="p-header_nav">
+      <ul class="p-header_nav_list">
+        <li class="p-header_nav_item">
+          <a href="./index.html" class="p-header_nav_item_link">トップページ</a>
         </li>
-        <li class="p-sns__item">
-          <a href="https://www.instagram.com/posse_programming/" target="_blank" rel="noopener noreferrer"
-            class="p-sns__item__link" aria-label="instagram">
-            <i class="u-icon__instagram"></i>
-          </a>
+        <li class="p-header_nav_item">
+          <a href="./src/quizpage.php" class="p-header_nav_item_link">クイズ</a>
         </li>
       </ul>
-    </div>
+    </nav>
+    <ul class="p-header_sns p-sns">
+      <li class="p-sns_item">
+        <a href="https://twitter.com/posse_program" target="_blank" rel="noopener noreferrer" class="p-sns_item_link" aria-label="Twitter">
+          <i class="u-icon_twitter"></i>
+        </a>
+      </li>
+      <li class="p-sns_item">
+        <a href="http://www.instagram.com/posse_programming/" target="_blank" rel="noopener noreferrer" class="p-sns_item_link" aria-label="instagram">
+          <i class="u-icon_instagram"></i>
+        </a>
+      </li>
+    </ul>
   </header>
-  <!-- /.l-header .p-header -->
-
+  
   <main class="l-main">
     <section class="p-top-hero">
-      <div class="p-top-hero__inner">
-        <div class="p-top-hero__body">
-          <h1 class="p-top-hero__body__title">学生プログラミングコミュニティ POSSE（ポッセ）</h1>
-          <span class="p-top-hero__body__catchcopy">自分史上最高<br>を仲間と。</span>
+      <div class="p-top-hero_inner">
+        <div class="p-top-hero_body">
+          <h1 class="p-top-hero_body_title">学生プログラミングコミュニティ POSSE（ポッセ）</h1>
+          <span class="p-top-hero_body_catchcopy">自分史上最高<br>を仲間と。</span>
         </div>
-        <picture class="p-top-hero__image">
-          <img src="./assets/img/img-hero.jpg" alt="">
+        <picture class="p-top-hero_image">
+          <img src="./src/assets/img/img-hero.jpg" alt="">
         </picture>
-        <div class="p-top-hero__scroll">Scroll Down</div>
+        <div class="p-top-hero_scroll">Scroll Down</div>
       </div>
     </section>
-    <!-- /.p-top-hero -->
-
+    
     <div class="p-top-container">
       <section class="l-section p-top-about">
         <div class="l-container">
           <h2 class="p-heading">
-            POSSEとは<span class="p-heading__caption" lang="en" aria-hidden="true">About POSSE</span>
+            POSSEとは<span class="p-heading_caption" lang="en" aria-hidden="true">About POSSE</span>
           </h2>
-          <div class="p-top-about__body">
-            <picture class="p-top-about__image">
-              <img src="./assets/img/img-about.jpg" alt="POSSEメンバー集合写真">
+          <div class="p-top-about_body">
+            <picture class="p-top-about_image">
+              <img src="./src/assets/img/img-about.jpg" alt="POSSEメンバー集合写真">
             </picture>
-            <div class="p-top-about__content">
-              <p>
-                学生プログラミングコミュニティ「POSSE(ポッセ)」は、人格とプログラミング、二つの面での成長をスローガンに活動しており、大学生だけが集まって学びを深めるコミュニティです。<br>プログラミングだけではありません。オフラインでのイベントや、旅行など様々な企画を行っています！<br>それらを通じて、夏休みの大半をPOSSEで出来た仲間と過ごす人もたくさんいるほどメンバーとの仲が深まります。
+            <div class="p-top-about_content">
+              <p>学生プログラミングコミュニティ「POSSE(ポッセ)」は、人格とプログラミング、二つの面での成長をスローガンに活動しており、大学生だけが集まって学びを深めるコミュニティです。<br>プログラミングだけではありません。オフラインでのイベントや、旅行など様々な企画を行っています！<br>それらを通じて、夏休みの大半をPOSSEで出来た仲間と過ごす人もたくさんいるほどメンバーとの仲が深まります。
               </p>
             </div>
           </div>
         </div>
       </section>
-      <!-- /.l-section p-top-about -->
     </div>
   </main>
-  <!-- /.l-main -->
-
+  
   <div class="p-line">
     <div class="l-container">
-      <div class="p-line__body">
-        <div class="p-line__body__inner">
-          <h2 class="p-heading -light p-line__title"><i class="u-icon__line"></i>POSSE 公式LINE</h2>
-          <div class="p-line__content">
-            <p>公式LINEにてご質問を随時受け付けております。<br>詳細やPOSSE最新情報につきましては、公式LINEにてお知らせ致しますので<br>下記ボタンより友達追加をお願いします！</p>
-          </div>
-          <div class="p-line__footer">
-            <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer"
-              class="p-line__button">LINE追加<i class="u-icon__link"></i></a>
+      <div class="p-line_body">
+        <div class="p-line_body_inner">
+          <h2 class="p-heading -light p-line_title"><i class="u-icon_line"></i>POSSE 公式LINE</h2>
+          <div class="p-line_content">
+            <p>公式LINEにてご質問を随時受け付けております。<br>詳細やPOSSE最新情報につきましては、公式LINEにてお知らせ致しますので<br>下記ボタンより友達追加をお願いします！</p></div>
+            <div class="p-line_footer">
+              <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer" class="p-line_button">LINE追加<i class="u-icon_link"></i></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- /.p-line -->
-
-  <footer class="l-footer p-footer">
-    <div class="p-fixedLine">
-      <a href="https://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer"
-        class="p-fixedLine__link">
-        <i class="u-icon__line"></i>
-        <p class="p-fixedLine__link__text"><span class="u-sp-hidden">POSSE</span>公式LINEで<br>最新情報をGET！</p>
-        <i class="u-icon__link"></i>
-      </a>
-    </div>
-    <div class="l-footer__inner">
-      <div class="p-footer__siteinfo">
-        <span class="p-footer__logo">
-          <img src="./assets/img/logo.svg" alt="POSSE">
-        </span>
-        <a href="https://posse-ap.com/" target="_blank" rel="noopener noreferrer"
-          class="p-footer__siteinfo__link">POSSE公式サイト</a>
+    
+    <footer class="l-footer p-footer">
+      <div class="p-fixedLine" id="js-fixedLine">
+        <a href="http://line.me/R/ti/p/@651htnqp?from=page" target="_blank" rel="noopener noreferrer" class="p-fixedLine_link" id="js-lineLink">
+          <i class="u-icon_line"></i>
+          <p class="p-fixedLine_line_text" id="js-iconLine">POSSE公式LINEで<br>最新情報をGET！</p>
+          <i class="u-icon_link"></i>
+        </a>
+        <div class="p-fixedIcon" id="js-fixedIcon"></div>
       </div>
-      <div class="p-footer__sns">
-        <ul class="p-sns__list p-footer__sns__list">
-          <li class="p-sns__item">
-            <a href="https://twitter.com/posse_program" target="_blank" rel="noopener noreferrer"
-              class="p-sns__item__link" aria-label="Twitter">
-              <i class="u-icon__twitter"></i>
-            </a>
-          </li>
-          <li class="p-sns__item">
-            <a href="https://www.instagram.com/posse_programming/" target="_blank" rel="noopener noreferrer"
-              class="p-sns__item__link" aria-label="instagram">
-              <i class="u-icon__instagram"></i>
-            </a>
-          </li>
-        </ul>
+      <div class="l-footer_inner">
+        <div class="p-footer_siteinfo">
+          <span class="p-footer_logo">
+            <img src="./src/assets/img/logo.svg" alt="POSSE">
+          </span>
+          <a href="http://posse-ap.com/" target="_blank" rel="noopener noreferrer" class="p-footer_siteinfo_link">POSSE公式サイト</a>
+          <i class="p-footer_icon_link"></i>
+        </div>
+        <div class="p-footer_sns">
+          <ul class="p-sns_list p-footer_sns_list">
+            <li class="p-sns_item js-snsItem">
+              <a href="http://twitter.com/posse_program" target="_blank" rel="noopener noreferrer" class="p-sns_item_link" aria-label="Twitter">
+                <i class="u-icon_twitter"></i>
+              </a>
+            </li>
+            <li class="p-sns_item js-snsItem">
+              <a href="http://www.instagram.com/posse_programming/" target="_blank" rel="noopener noreferrer" class="p-sns_item_link" aria-label="instagram">
+                <i class="u-icon_instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="p-footer__copyright">
-      <small lang="en">©︎2022 POSSE</small>
-    </div>
-  </footer>
-  <!-- /.l-footer .p-footer -->
-
-</body>
-
-</html>
+      <div class="p-footer_copyright">
+        <small lang="en">©︎2022 POSSE</small>
+      </div>
+    </footer>
+    <script src="./toppage.js"></script>
+  </body>
+  
+  </html>
