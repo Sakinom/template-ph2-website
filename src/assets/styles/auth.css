@@ -1,0 +1,136 @@
+/* .wrapper input{
+  border: 1px solid #666;
+} */
+
+.l-main {
+  margin-top: 150px;
+}
+
+.login_container {
+  text-align: center;
+}
+
+.login_title_content {
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.password_input,
+.username_input {
+  padding: 10px 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  color: #666;
+}
+
+.password_input::placeholder,
+.username_input::placeholder {
+  text-align: left;
+}
+
+.user_input_username,
+.user_input_password {
+  margin: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.linear {
+  /* background: linear-gradient(0deg, white 0% 40%, #28CEFE 40% 60%, white 60%);
+  background-position: bottom; */
+  background-image: linear-gradient(90deg, white 0% 4%, #28CEFE 5% 95%, white 96%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.15rem;
+  background-position: bottom;
+}
+
+.icon_user,
+.icon_password {
+  width: 30px;
+  height: 30px;
+}
+
+.icon_user {
+  content: url("../img/icon/user.png");
+}
+
+.icon_password {
+  content: url("../img/icon/lock.png");
+}
+
+.login_btn {
+  display: flex;
+  justify-content: center;
+}
+
+.login_btn_container {
+  margin: 30px 0px;
+  background: radial-gradient(#1ecbfb 60%, #72ddfa 90%);
+  /* background: #28CEFE; */
+  width: 200px;
+  border-radius: 30px;
+}
+
+.login_btn_content {
+  padding: 14px;
+  color: #fff;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+}
+
+.forgot_btn_content {
+  color: rgb(160, 160, 160);
+}
+
+.login_failed {
+  margin-top: 0;
+  color: #ff2a00;
+  font-weight: bold;
+}
+
+/* signup.phpの内容 */
+header div {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 18px;
+  color: #2ab3e9;
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.mb-3 {
+  margin-top: 18px;
+}
+
+.mb-4 {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #666;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.btn {
+  text-align: center;
+}
+
+.wrapper button{
+  border: 1px solid #666;
+  border-radius: 5px;
+  margin-top: 18px;
+  padding: 5px 10px;
+}

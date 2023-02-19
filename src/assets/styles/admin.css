@@ -1,0 +1,33 @@
+main{
+  margin: 24px;
+}
+
+th,
+tr,
+td {
+  padding: 5px 10px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.question_list input, .menu input{
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+input:hover{
+  background-color: bisque;
+}
+
+.menu{
+  margin-top: 36px;
+}
+
+.content, .choices, .answer, .image, .supplement{
+  margin: 24px 0px;
+}

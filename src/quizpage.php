@@ -13,6 +13,9 @@ try {
     $index = array_search($choice["question_id"], array_column($questions, 'id'));
     $questions[$index]["choices"][] = $choice;
   }
+  // var_dump($questions[$index]["choices"]);
+  // var_dump($questions[$index]["name"]);
+  // var_dump($questions[0]["choices"][0]["name"]);
 } catch (PDOException $e) {
   die("接続エラー：{$e->getMessage()}");
 } finally {
@@ -32,6 +35,7 @@ try {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="./assets/scripts/myQuiz.js" defer></script>
 </head>
 
 <body>
@@ -88,38 +92,44 @@ try {
 
     <div class="p-quiz-container l-container" id="js-quizContainer">
       <?php for ($i = 0; $i < count($questions); $i++) { ?>
-        <h2 class="p-quiz-box_question_title">
-          <span class="p-quiz-box_label">Q<?= $i + 1 ?></span>
-          <span class="p-quiz-box_question_title_text"><?= $questions[$i]["content"]; ?></span>
-        </h2>
-        <figure class="p-quiz-box_question_image">
-          <img src="../assets/img/quiz/img-quiz0<?= $i + 1 ?>.png" alt="">
-        </figure>
-        <div class="p-quiz-box_answer">
-          <span class="p-quiz-box_label p-quiz-box_label--accent">A</span>
-          <ul class="p-quiz-box_answer_list">
-            <?php for ($j = 0; $j < count($choices); $j++) { ?>
-              <li class="p-quiz-box_answer_item">
-                <button class="p-quiz-box_answer_button js-answer" data-answer="${answerIndex}">
-                  <?php
-                  if ($choices[$j]["question_id"] == $questions[$i]["id"]) {
-                    echo $choices[$j]["name"];
-                  }
-                  ?><i class="u-icon_arrow"></i>
-                </button>
-              </li>
-            <?php } ?>
-
-          </ul>
-          <div class="p-quiz-box_answer_correct js-answerBox">
-            <p class="p-quiz-box_answer_correct_title js-answerTitle"></p>
-            <p class="p-quiz-box_answer_correct_content">
-              <span class="p-quiz-box_answer_correct_content_label">A</span>
-              <span class="js-answerText"></span>
-            </p>
+        <section class="p-quiz-box js-quiz" data-quiz="<?php $i ?>">
+          <div class="p-quiz-box_question">
+            <h2 class="p-quiz-box_question_title">
+              <span class="p-quiz-box_label">Q<?= $i + 1 ?></span>
+              <span class="p-quiz-box_question_title_text js-question"><?= $questions[$i]["content"]; ?></span>
+            </h2>
+            <figure class="p-quiz-box_question_image">
+              <img src="../assets/img/quiz/img-quiz0<?= $i + 1 ?>.png" alt="">
+            </figure>
           </div>
-        </div>
-
+          <div class="p-quiz-box_answer">
+            <span class="p-quiz-box_label p-quiz-box_label--accent">A</span>
+            <ul class="p-quiz-box_answer_list">
+              <?php foreach($questions[$i]["choices"] as $key => $choice) { ?>
+                <li class="p-quiz-box_answer_item">
+                  <button class="p-quiz-box_answer_button js-answer" data-answer="<?= $i ?>" data-correct="<?= $choice["valid"] ?>">
+                    <?= $choice["name"]; ?><i class="u-icon_arrow"></i>
+                  </button>
+                </li>
+              <?php } ?>
+            </ul>
+            <div class="p-quiz-box_answer_correct js-answerBox">
+              <p class="p-quiz-box_answer_correct_title js-answerTitle"></p>
+              <p class="p-quiz-box_answer_correct_content">
+                <span class="p-quiz-box_answer_correct_content_label">A</span>
+                <span class="js-answerText">
+                  <?= $questions[$i]["choices"][$questions[$i]["choices"][0]["valid"]]["name"]; ?>
+                </span>
+              </p>
+            </div>
+          </div>
+          <?php if (!empty($questions[$i]["supplement"])) { ?>
+            <cite class="p-quiz-box_note">
+              <i class="u-icon_note"></i>
+              <?= $questions[$i]["supplement"]; ?>
+            </cite>
+          <?php } ?>
+        </section>
       <?php } ?>
     </div>
   </main>
@@ -177,8 +187,4 @@ try {
     </div>
   </footer>
 </body>
-<!-- <script src="quiz.js"></script> -->
-<!-- <script src="quiz-sub.js"></script> -->
-<!-- <script src="../toppage/toppage.js"></script> -->
-
 </html>
