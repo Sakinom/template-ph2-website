@@ -1,8 +1,10 @@
 <?php
-// if (empty($_SERVER["HTTP_REFERER"])) {
-//   //リダイレクト
-//   header('Location: ../auth/signin.php');
-//  }
+session_start();
+
+if (empty($_SESSION['id'])) {
+  //リダイレクト
+  header('Location: ../auth/signin.php');
+ }
 
 try {
   $pdo = new PDO('mysql:host=db;dbname=posse;', 'root', 'root');

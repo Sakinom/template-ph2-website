@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['id'] = $user["id"];
     $_SESSION['name'] = $user["name"];
     $message = "ログインに成功しました";
+
+    header('Location: ../index.php');
   }
 }
 ?>
@@ -60,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="password" class="form-label">パスワード</label>
             <input type="text" name="password" class="form-control" id="password">
           </div>
-          <button type="submit" disabled class="btn submit">ログイン</button>
+          <div class="login_btn">
+            <button type="submit" disabled class="btn submit">ログイン</button>
+          </div>
         </form>
       </div>
     </main>

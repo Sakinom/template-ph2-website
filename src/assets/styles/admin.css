@@ -14,15 +14,25 @@ h1 {
   margin: 10px;
 }
 
+main {
+  padding-top: 100px;
+}
+
+.container input{
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #666;
+}
+
 .question_list input, .menu input{
   background-color: #ddd;
   border-radius: 5px;
   padding: 3px;
 }
 
-input:hover{
+/* input:hover{
   background-color: bisque;
-}
+} */
 
 .menu{
   margin-top: 36px;
@@ -30,4 +40,26 @@ input:hover{
 
 .content, .choices, .answer, .image, .supplement{
   margin: 24px 0px;
+}
+
+.signout {
+  text-align: center;
+}
+
+.signout_btn {
+  line-height: 1.8;
+  margin-top: 16px;
+  color: #666;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+.signout_btn {
+  padding: 3px;
+  margin-left: 15px;
+  color: #666;
+  font-weight: bold;
+  font-size: 14px;
+}
 }

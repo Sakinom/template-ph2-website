@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //ブラウザからのリクエス
     $stmt->bindValue(':user_id', $user["id"]);
     $stmt->execute();
     $user_invitation = $stmt->fetch();
+    // var_dump($user_invitation["invited_at"]);
 
     $diff = (new DateTime())->diff(new DateTime($user_invitation["invited_at"])); //DateTimeで現在時刻を取得、diffメソッドを使って$user_invitation["invited_at"]で指定した日付との日にちの差を得る
     $is_expired = $diff->days >= 1; //年月を含めて日数の差を算出し、その値が1以上の時に 'true' を$is_expiredに入れる
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //ブラウザからのリクエス
 
           $_SESSION['id'] = $user["id"]; // $_SESSION(セッション変数)の登録
           $_SESSION['message'] = "ユーザー登録に成功しました";
-          header('Location: /admin/index.php');
+          header('Location: ../index.php');
         } catch (PDOException $e) {
           $pdo->rollBack(); //失敗時にデータを元の形に戻す
           $message = $e->getMessage();
@@ -66,15 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //ブラウザからのリクエス
   $token = isset($_GET['token']) ? $_GET['token'] : null; //$_GET['token']に値がセットされている場合は$tokenにその値を入れ、ない場合はnullを入れる
   $email = isset($_GET['email']) ? $_GET['email'] : null;
 
-  // if (is_null($token) || is_null($email)) { //$tokenと$emailのどちらかがnullか判断
-  //   header('Location: /'); //Errorページに送る
-  //   // exit(); //いらない...?
-  // }
+  if (is_null($token) || is_null($email)) { //$tokenと$emailのどちらかがnullか判断
+    header('Location: /'); //Errorページに送る
+    // exit(); //いらない...?
+  }
 
-  // if (isset($_SESSION["id"])) {
-  //   header('Location: /admin/index.php');
-  //   // exit(); //いらない...?
-  // }
+  if (isset($_SESSION["id"])) {
+    var_dump($_SESSION["id"]);
+    header('Location: /admin/index.php');
+    // exit(); //いらない...?
+  }
 }
 
 ?>
@@ -114,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //ブラウザからのリクエス
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" name="disabled_email" id="email" class="form-control">
+            <input type="text" name="disabled_email" class="email form-control" value="<?= $email ?>" id="email" disabled>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">パスワード</label>
@@ -126,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //ブラウザからのリクエス
           </div>
           <!-- フォームでhidden属性を利用すればフォームに入力させず何かしらの値を送信することが出来る -->
           <input type="hidden" name="token" id="token" value="<?= $token ?>">
-          <input type="hidden" name="token" id="email" value="<?= $email ?>">
+          <input type="hidden" name="email" id="email" value="<?= $email ?>">
           <div class="btn">
             <button type="submit" disabled class="btn submit">登録</button>
           </div>

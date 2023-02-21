@@ -1,10 +1,11 @@
 <?php
-
+session_start();
 //index.phpへの直リンク禁止
-if (empty($_SERVER["HTTP_REFERER"])) {
+if (empty($_SESSION['id'])) {
   //リダイレクト
   header('Location: ./auth/signin.php');
 }
+// var_dump($_SESSION['id']);
 
 $dbn = 'mysql:dbname=posse; host=db; charset=utf8';
 $user = 'root';
@@ -29,6 +30,7 @@ try {
   //   VALUES ('6', '先進テクノロジー活用企業と出遅れた企業の収益性の差はどれくらいあると言われているでしょうか？
   // ', '', 'Accenture Technology Vision 2021')")->fetchAll(PDO::FETCH_ASSOC);
   $questions = $pdo->query("SELECT * FROM questions")->fetchAll(PDO::FETCH_ASSOC); //SQL文を実行して、結果を$questionsに代入
+  // var_dump($_SESSION['id']);
 ?>
   <!-- <pre>
   <?php var_dump($questions) ?>
@@ -61,6 +63,7 @@ try {
 </head>
 
 <body>
+  <?php include(dirname(__FILE__) . '/components/header.php'); ?>
   <main>
     <div class="question_list">
       <h1>問題一覧</h1>

@@ -1,10 +1,13 @@
 <?php
 // $_SESSION['id'] = 1; //ログインした状態を擬似的に設定
+session_start();
 
 if (!isset($_SESSION['id'])) {
-  // header('Location: /admin/auth/signin.php');
+
+  header('Location: /admin/auth/signin.php');
   // var_dump($_SERVER);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // var_dump($_SERVER['REQUEST_METHOD']);
 
   $email = $_POST["email"];
@@ -34,10 +37,12 @@ if (!isset($_SESSION['id'])) {
       $user_id = $pdo->lastInsertId();
 
       $token = hash('sha256', uniqid(rand(), 1));
-      $stmt = $pdo->prepare("INSERT INTO user_invitations(user_id, token) VALUES(:user_id, :token)");
+      $invited_at = (new DateTime())->format('Y-m-d H:i:s');
+      $stmt = $pdo->prepare("INSERT INTO user_invitations(user_id, token, invited_at) VALUES(:user_id, :token, :invited_at)");
       $stmt->execute([
         "user_id" => $user_id,
-        "token" => $token
+        "token" => $token,
+        "invited_at" => $invited_at
       ]);
 
       mb_language("Japanese");
@@ -82,20 +87,21 @@ if (!isset($_SESSION['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POSSE ユーザー招待</title>
   <!-- スタイルシート読み込み -->
-  <link rel="stylesheet" href="./../assets/styles/common.css">
-  <link rel="stylesheet" href="./../admin.css">
+  <link rel="stylesheet" href="/assets/styles/common.css">
+  <link rel="stylesheet" href="/assets/styles/admin.css">
   <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <script src="../../assets/scripts/common.js" defer></script>
 </head>
 
 <body>
   <!-- 外部ファイルを読み込み -->
-  <?php include(dirname(__FILE__) . '/../../components/admin/header.php'); ?>
+  <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
   <div class="wrapper">
-    <?php include(dirname(__FILE__) . '/../../components/admin/sidebar.php'); ?>
+    <?php include(dirname(__FILE__) . '/../components/sidebar.php'); ?>
     <main>
       <div class="container">
         <h1 class="mb-4">ユーザー招待</h1>
