@@ -7,8 +7,10 @@
   const modalMain = document.querySelector('.modal_main');
   const modalLoading = document.querySelector('.modal_loading');
 
+
   buttons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', e => {
+      // e.preventDefault();
       modal.style.display = 'block';
       modalLoading.style.display = 'none';
       complete.style.display = 'none';
@@ -16,7 +18,8 @@
       modalMain.style.display = 'block';
       console.log('button');
     })
-  });
+  }
+  );
 
   const close = document.querySelectorAll('.modal_close');
   close.forEach(btn => {
@@ -33,16 +36,41 @@
   }
 
   const modalBtn = document.querySelector('.modal_btn');
+  // const loader = () => {
+  //   modalMain.style.display = 'none';
+  //   modalLoading.style.display = 'block';
+  //   setTimeout(changeModal, 3000);
+  // }
 
-  modalBtn.addEventListener('click', () => {
+  const form = document.querySelector('form');
+
+  modalBtn.addEventListener('click', (e) => {
     console.log('hello');
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    // await loader();
     modalMain.style.display = 'none';
     modalLoading.style.display = 'block';
     if (document.getElementById('share').checked) {
       openTwitter();
     }
-    setTimeout(changeModal, 3000);
-  })
+
+    fetch('index.php', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        changeModal();
+      });
+
+    // setTimeout(changeModal, 3000);
+    // document.addEventListener('DOMContentLoaded', () => {
+    // changeModal();
+    // });
+  });
 
   const dateInput = document.getElementById('date');
   const modalCalendar = document.querySelector('.modal_calendar');
@@ -74,14 +102,16 @@
   })
 }
 
+
 /*******************************************************
     グラフの作成
 *******************************************************/
 
-(function () {
+(async function () {
   'use strict';
 
-  const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_time.json';
+  const url = '/webapp/studyhours.json';
+  // const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_time.json';
 
   async function timeBar() {
     const response = await fetch(url);
@@ -156,7 +186,7 @@
     });
   };
 
-  timeBar();
+  await timeBar();
 
 })();
 
@@ -192,15 +222,24 @@
     }
   };
 
-  (function () {
+  (async function () {
     'use strict';
 
-    const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_language.json';
+    const url = '/webapp/language.json';
+    // const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_language.json';
 
     async function langPie() {
       const response = await fetch(url);
-      const datas = await response.json();
+      const dataJ = await response.json();
+
+      const datas = [dataJ];
       // return lang = Object.keys(datas[0]);
+      // const lang = datas.map(dataset => {
+      //   return Object.keys(dataset);
+      // })
+      // const ratio = datas.map(dataset => {
+      //   return Object.values(dataset);
+      // });
       const lang = datas.map(dataset => {
         return Object.keys(dataset);
       })
@@ -256,19 +295,22 @@
       });
     };
 
-    langPie();
+    await langPie();
 
   })();
 
 
-  (function () {
+  (async function () {
     'use strict';
 
-    const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_contents.json';
+    const url = '/webapp/content.json';
+    // const url = 'http://posse-task.anti-pattern.co.jp/1st-work/study_contents.json';
 
     async function contentPie() {
       const response = await fetch(url);
-      const datas = await response.json();
+      const dataJ = await response.json();
+
+      const datas = [dataJ];
       // return lang = Object.keys(datas[0]);
       const content = datas.map(dataset => {
         return Object.keys(dataset);
@@ -276,13 +318,18 @@
       const ratio = datas.map(dataset => {
         return Object.values(dataset);
       });
+      const total = ratio[0].reduce(function (sum, element) {
+        return sum + element;
+      }, 0);
 
       var type = 'doughnut';
 
       var data = {
         labels: content[0],
         datasets: [{
-          data: ratio[0],
+          data: ratio[0].map(data => {
+            return Math.round(data / total * 100);
+          }),
           backgroundColor: ['#0042E5', '#0070BA', '#02BDDB'],
           pointStyle: 'circle',
           // textAlign: 'left',
@@ -315,7 +362,7 @@
       });
     };
 
-    contentPie();
+    await contentPie();
 
   })();
 }

@@ -62,10 +62,14 @@
     color: #fff;
     border-radius: 20px;
     border: none;
+    text-align: center;
   }
 
   .header_btn_content {
     margin: 0;
+    border: none;
+    color: #fff;
+    background: none;
   }
 
   /* ヘッダー終了 */
