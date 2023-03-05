@@ -1,5 +1,5 @@
 <header id="js-header" class="l-header p-header">
-  <div class="p-header_logo"><img src="../../assets/img/img-hero.jpg" alt="POSSE"></div>
+  <div class="p-header_logo"><img src="../../assets/img/logo.svg" alt="POSSE"></div>
   <button class="p-header_button" id="js-headerButton"></button>
   <div class="p-header_inner">
     <nav class="p-header_nav">

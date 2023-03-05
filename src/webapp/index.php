@@ -39,12 +39,12 @@ if ($_POST) {
 
   $sql = 'INSERT INTO studies(studied_date, studyhours) VALUES (:studied_date, :studyhours)';
   $stmt = $pdo->prepare($sql);
-  if ($newDate === "") { 
+  if ($newDate === "") {
     $stmt->bindValue(":studied_date", null, PDO::PARAM_NULL);
   } else {
     $stmt->bindValue(':studied_date', $newDate);
   }
-  if ($studyHours === "") { 
+  if ($studyHours === "") {
     $stmt->bindValue(":studyhours", null, PDO::PARAM_NULL);
   } else {
     $stmt->bindValue(':studyhours', $studyHours);
@@ -53,11 +53,11 @@ if ($_POST) {
   $studies = $stmt->execute();
 
   $studies_id = $pdo->lastInsertId();
-  $time_l = $studyHours/count($language);
-  
+  $time_l = $studyHours / count($language);
+
   $sql = 'INSERT INTO languages(studies_id, language, studyhours) VALUES (:studies_id, :language, :studyhours)';
   $stmt = $pdo->prepare($sql);
-  foreach($language as $l) {
+  foreach ($language as $l) {
     $stmt->bindValue(':studies_id', $studies_id);
     $stmt->bindValue(':language', $l);
     $stmt->bindValue(':studyhours', $time_l);
@@ -65,11 +65,11 @@ if ($_POST) {
   }
 
 
-  $time_c = $studyHours/count($content);
+  $time_c = $studyHours / count($content);
 
   $sql = 'INSERT INTO content(studies_id, content, studyhours) VALUES (:studies_id, :content, :studyhours)';
   $stmt = $pdo->prepare($sql);
-  foreach($content as $c) {
+  foreach ($content as $c) {
     $stmt->bindValue(':studies_id', $studies_id);
     $stmt->bindValue(':content', $c);
     $stmt->bindValue(':studyhours', $time_c);
@@ -83,36 +83,37 @@ if ($_POST) {
   echo "error";
 }
 
-$stmt = $pdo->prepare("SELECT DATE_FORMAT(calendar.ymd, '%d') as studied_day, case when sum(studyhours) is not null then sum(studyhours) else 0 end as studyhours from studies
-right outer join (
-select
-d.ymd as ymd
-from(
-select
-date_format(date_add(date_add(last_day( now()), interval - day(last_day(now())) DAY ) , interval td.add_day DAY ), '%Y-%m-%d' ) as ymd
-from(
-select
-0 as add_day
-from
-dual
-where
-( @num := 1 - 1 ) * 0
-union all
-select
-@num := @num + 1 as add_day
-from
-`information_schema`.columns limit 31
-) as td
-) as d
-where month(d.ymd) = month(now())
-order by d.ymd ) as calendar
-on calendar.ymd = studies.studied_date
-group by calendar.ymd
-having studied_day = DATE_FORMAT(CURDATE(), '%e')");
+$day = $pdo->query("SELECT DATE_FORMAT(studied_date, '%Y-%m-%d') as studied_day, case when sum(studyhours) is not null then sum(studyhours) else 0 end as studyhours from studies group by studied_day having studied_day = DATE_FORMAT(CURDATE(), '%Y-%m-%d')")->fetchAll(PDO::FETCH_ASSOC);
+// $stmt = $pdo->prepare("SELECT DATE_FORMAT(calendar.ymd, '%d') as studied_day, case when sum(studyhours) is not null then sum(studyhours) else 0 end as studyhours from studies
+// right outer join (
+// select
+// d.ymd as ymd
+// from(
+// select
+// date_format(date_add(date_add(last_day( now()), interval - day(last_day(now())) DAY ) , interval td.add_day DAY ), '%Y-%m-%d' ) as ymd
+// from(
+// select
+// 0 as add_day
+// from
+// dual
+// where
+// ( @num := 1 - 1 ) * 0
+// union all
+// select
+// @num := @num + 1 as add_day
+// from
+// `information_schema`.columns limit 31
+// ) as td
+// ) as d
+// where month(d.ymd) = month(now())
+// order by d.ymd ) as calendar
+// on calendar.ymd = studies.studied_date
+// group by calendar.ymd
+// having studied_day = DATE_FORMAT(CURDATE(), '%e')");
 // $stmt = $pdo->prepare("SELECT DATE_FORMAT(`studied_date`, '%Y-%m-%d') as `studied_day`, sum(studyhours) as studyhours from studies group by studied_date having studied_day = DATE_FORMAT(CURDATE(), '%Y-%m-%d')");
 // $stmt->bindValue(':date', date('Y-m-d'));
-$stmt->execute();
-$day = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $stmt->execute();
+// $day = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // var_dump($day);
 
@@ -182,7 +183,7 @@ group by calendar.ymd having DATE_FORMAT(calendar.ymd, '%Y-%m') = DATE_FORMAT(CU
 // $days = range($first_day, $last_day);
 
 $arr = json_encode($dates);
-file_put_contents("studyhours.json" , $arr);
+file_put_contents("studyhours.json", $arr);
 
 // $lang = $pdo->query('select case when language is not null then language else "その他" end as language, sum(studyhours) from studies group by language')->fetchAll(PDO::FETCH_ASSOC);
 
@@ -202,7 +203,7 @@ $studies_l = $pdo->query("select languages.language, sum(languages.studyhours) a
 $language_arr = [];
 
 foreach ($studies_l as $s) {
-  $language_arr = array_merge($language_arr, array($s['language']=>$s['studyhours']));
+  $language_arr = array_merge($language_arr, array($s['language'] => $s['studyhours']));
 }
 
 // foreach($studies as $s) {
@@ -211,18 +212,18 @@ foreach ($studies_l as $s) {
 
 // var_dump($language_arr);
 $language_array = json_encode($language_arr, JSON_UNESCAPED_UNICODE);
-file_put_contents("language.json" , $language_array);
+file_put_contents("language.json", $language_array);
 
 $studies_c = $pdo->query("select content.content, sum(content.studyhours) as studyhours from studies join content on studies.id = content.studies_id group by content")->fetchAll(PDO::FETCH_ASSOC);
 
 $content_arr = [];
 
 foreach ($studies_c as $s) {
-  $content_arr = array_merge($content_arr, array($s['content']=>$s['studyhours']));
+  $content_arr = array_merge($content_arr, array($s['content'] => $s['studyhours']));
 }
 
 $content_array = json_encode($content_arr, JSON_UNESCAPED_UNICODE);
-file_put_contents("content.json" , $content_array);
+file_put_contents("content.json", $content_array);
 
 
 
@@ -380,7 +381,7 @@ file_put_contents("content.json" , $content_array);
             <div class="header_btn_container">
               <div class="header_btn_modal modal_btn">
                 <!-- <button type="submit" class="header_btn_content" name="submit">記録・投稿</button> -->
-                <?php sleep(3)?>
+                <?php sleep(3) ?>
                 <input type="submit" class="header_btn_content" name="submit" id="submit" value="記録・投稿">
               </div>
             </div>
@@ -453,29 +454,35 @@ file_put_contents("content.json" , $content_array);
           <div class="datasets_value_container">
             <div class="datasets_value_list">
               <p class="datasets_value_title">Today</p>
-              <p class="datasets_value_num"><?= $day[0]['studyhours']?></p>
+              <p class="datasets_value_num">
+                <?php if (isset($day[0]['studyhours'])) {
+                  echo $day[0]['studyhours'];
+                } else {
+                  echo '0';
+                } ?></p>
               <p class="datasets_value_unit">hour</p>
             </div>
           </div>
           <div class="datasets_value_container">
             <div class="datasets_value_list">
               <p class="datasets_value_title">Month</p>
-              <p class="datasets_value_num"><?php if(isset($month[0]['studyhours'])){
-                echo $month[0]['studyhours'];
-              }else{
-                echo '0';
-              }?></p>
+              <p class="datasets_value_num"><?php if (isset($month[0]['studyhours'])) {
+                                              echo $month[0]['studyhours'];
+                                            } else {
+                                              echo '0';
+                                            } ?></p>
               <p class="datasets_value_unit">hour</p>
             </div>
           </div>
           <div class="datasets_value_container">
             <div class="datasets_value_list">
               <p class="datasets_value_title">Total</p>
-              <p class="datasets_value_num"><?php if(isset($total[0]['studyhours'])){
-                echo $total[0]['studyhours'];
-              }else{
-                echo '0';
-              }?></p>
+              <p class="datasets_value_num">
+                <?php if (isset($total[0]['studyhours'])) {
+                  echo $total[0]['studyhours'];
+                } else {
+                  echo '0';
+                } ?></p>
               <p class="datasets_value_unit">hour</p>
             </div>
           </div>
@@ -511,7 +518,7 @@ file_put_contents("content.json" , $content_array);
       <!-- <button onclick="clickLeft()"><i class="left_icon"></i></button> -->
       <!-- <i class="left_icon" onclick="clickLeft()"></i> -->
       <i class="left_icon"></i>
-      <p class="period_content"><?= date("Y年m月")?></p>
+      <p class="period_content"><?= date("Y年m月") ?></p>
       <i class="right_icon"></i>
     </div>
     <div class="header_btn_container">
